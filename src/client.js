@@ -1,9 +1,21 @@
 const WebSocket = require('ws');
 
-const { getWebsocketPulsarUrlWithTopic } = require('./config');
+const { 
+    getProducerWebsocketPulsarUrlWithTopic, 
+    getConsumerWebsocketPulsarUrlWithTopic 
+} = require('./config');
 
-module.exports = (topic) => new WebSocket(getWebsocketPulsarUrlWithTopic(topic), {
-    headers: {
-        Authorization: `Bearer ${process.env.ADDON_PULSAR_TOKEN}`,
-    },
-});
+module.exports = (topic, subscription = null) => {
+    let url = getProducerWebsocketPulsarUrlWithTopic(topic)
+    if (subscription) {
+        url = getConsumerWebsocketPulsarUrlWithTopic(topic, subscription)
+    }
+
+    const ws = new WebSocket(url, {
+        headers: {
+            Authorization: `Bearer ${process.env.ADDON_PULSAR_TOKEN}`,
+        },
+    });
+
+    return ws
+};
