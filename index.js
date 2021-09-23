@@ -12,12 +12,12 @@ const port = process.env.PORT || 3000;
 
 app.use(morgan('combined'));
 
-app.get('/', function (req, res) {
-    res.send('Hello Devoxx Paris 2021!');
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + 'public/index.html');
 });
 
 io.on('connection', function (socket) {
-    console.log('a user connected');
+    console.log('user connected');
 
     socket.on('disconnect', function () {
         console.log('user disconnected');
