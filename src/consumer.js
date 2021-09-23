@@ -1,11 +1,30 @@
 const client = require('./client')
 
-const ws = client(process.env.TOPIC);
+try {
 
-ws.on('message', function(message) {
-    const receiveMsg = JSON.parse(message);
-    console.log('Received: %s - payload: %s', message, Buffer.from(receiveMsg.payload, 'base64').toString());
-    
-    const ackMsg = {"messageId" : receiveMsg.messageId};
-    ws.send(JSON.stringify(ackMsg));
-});
+    const ws = client(process.env.TOPIC, 'sub');
+
+    ws.on('message', function(message) {
+        const receiveMsg = JSON.parse(message);
+        console.log('Received: %s - payload: %s', message, Buffer.from(receiveMsg.payload, 'base64').toString());
+        
+        const ackMsg = {"messageId" : receiveMsg.messageId};
+        ws.send(JSON.stringify(ackMsg));
+    });
+
+    ws.on('open', function() {
+        console.info('Opened !')
+    })
+
+    ws.on('close', function close() {
+        console.info('disconnected');
+    });
+
+    ws.on('error', function (error) {
+        throw err
+    });
+
+} catch (e) {
+    console.error(e);
+    process.exit(1);
+}
