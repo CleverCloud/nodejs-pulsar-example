@@ -6,9 +6,9 @@ const {
 } = require('./config');
 
 module.exports = (topic, subscription = null) => {
-    let url = getProducerWebsocketPulsarUrlWithTopic(topic)
+    let url = getProducerWebsocketPulsarUrlWithTopic(topic);
     if (subscription) {
-        url = getConsumerWebsocketPulsarUrlWithTopic(topic, subscription)
+        url = getConsumerWebsocketPulsarUrlWithTopic(topic, subscription);
     }
 
     const ws = new WebSocket(url, {
@@ -17,5 +17,5 @@ module.exports = (topic, subscription = null) => {
         },
     });
 
-    return ws
+    return ws;
 };

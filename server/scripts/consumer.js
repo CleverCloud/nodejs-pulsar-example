@@ -1,4 +1,4 @@
-const client = require('./client')
+const client = require('../src/client');
 
 try {
 
@@ -13,7 +13,7 @@ try {
     });
 
     ws.on('open', function() {
-        console.info('Opened !')
+        console.info('Opened !');
     })
 
     ws.on('close', function close() {
@@ -21,7 +21,8 @@ try {
     });
 
     ws.on('error', function (error) {
-        throw err
+        throw error;
+        process.exit(1);
     });
 
 } catch (e) {

@@ -1,4 +1,4 @@
-const client = require('./client')
+const client = require('../src/client');
 
 try {
     const ws = client(process.env.TOPIC);

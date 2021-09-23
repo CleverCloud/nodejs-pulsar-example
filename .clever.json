@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "app_id": "app_421bdbf7-be8b-436d-9dbf-1cb7abb7b8a5",
+      "org_id": "user_572ee43b-37ea-439e-9af2-c0b7a116f7ae",
+      "deploy_url": "https://push-n2-par-clevercloud-customers.services.clever-cloud.com/app_421bdbf7-be8b-436d-9dbf-1cb7abb7b8a5.git",
+      "name": "devoxx-paris-2021",
+      "alias": "devoxx-paris-2021"
+    }
+  ]
+}
