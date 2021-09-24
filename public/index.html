@@ -9,11 +9,15 @@
 <body>
     <h1>Hey buddy!</h1>
     <section>
-        <form action="/messages" method="post">
+        <h2>Message</h2>
+        <form id="form" action="/messages" method="post">
             <label for="message">Message</label>
             <input type="text" name="message" id="message">
             <button type="submit">Send</button>
         </form>
+        <br>
+        <h2>Result</h2>
+        <ul id="result"></ul>
     </section>
     <script src="./app.js"></script>
 </body>

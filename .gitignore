@@ -1,4 +1,4 @@
 node_modules
 .env
 .clever.json
-public/app.js
+dist/app.js
