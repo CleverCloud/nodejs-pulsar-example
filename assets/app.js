@@ -33,6 +33,7 @@ const form = document.getElementById('form');
 const message = document.getElementById('message');
 const messageConfirmation = document.getElementById('message-confirmation');
 const result = document.getElementById('result');
+const loading = document.getElementById('loading');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -52,9 +53,14 @@ form.addEventListener('submit', (e) => {
         }).then(() => {
             form.reset();
             messageConfirmation.classList.remove('hidden');
+            loading.classList.remove('hidden');
             setTimeout(() => {
                 messageConfirmation.classList.add('hidden');
             }, 3000);
+
+            setTimeout(() => {
+                loading.classList.add('hidden');
+            }, 20000);
         })
     }
 });
@@ -75,6 +81,7 @@ function newResultItem(message, { label, score }) {
 }
 
 socket.on('message', (payload) => {
+    loading.classList.add('hidden');
     const { message, sentiment } = JSON.parse(payload);
     const item = newResultItem(message, JSON.parse(sentiment));
     result.appendChild(item);
