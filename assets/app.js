@@ -24,6 +24,7 @@ const socket = io({
 
 const form = document.getElementById('form');
 const message = document.getElementById('message');
+const messageConfirmation = document.getElementById('message-confirmation');
 const result = document.getElementById('result');
 
 form.addEventListener('submit', (e) => {
@@ -41,13 +42,31 @@ form.addEventListener('submit', (e) => {
             body: JSON.stringify({
                 message: message.value,
             }),
-        });
+        }).then(() => {
+            form.reset();
+            messageConfirmation.classList.remove('hidden');
+            setTimeout(() => {
+                messageConfirmation.classList.add('hidden');
+            }, 3000);
+        })
     }
 });
 
-socket.on('message', (payload) => {
+function newResultItem(msg) {
     const item = document.createElement('li');
-    item.textContent = payload.message + payload.data;
+    item.classList.value = 'py-4';
+
+    const text = document.createElement('p');
+    text.classList.value = 'text-sm text-gray-500';
+    text.textContent = msg;
+
+    item.appendChild(text);
+
+    return item;
+}
+
+socket.on('message', (payload) => {
+    const item = newResultItem(payload.message + payload.data);
     result.appendChild(item);
 });
 

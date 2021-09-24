@@ -10,11 +10,14 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/index.mjs",
-    "build": "esbuild app.js --bundle --outfile=dist/app.js",
-    "dev": "esbuild app.js --bundle --watch --outfile=dist/app.js"
+    "build": "esbuild assets/app.js --bundle --outfile=dist/app.js && tailwindcss -i assets/app.css -o dist/app.css",
+    "dev:js": "esbuild assets/app.js --bundle --watch --outfile=dist/app.js",
+    "dev:css": "tailwindcss -i assets/app.css -o dist/app.css --watch"
+
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",
+    "@tailwindcss/forms": "^0.3.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
@@ -26,6 +29,7 @@
     "ws": "^8.2.2"
   },
   "devDependencies": {
-    "esbuild": "^0.13.1"
+    "esbuild": "^0.13.1",
+    "tailwindcss": "^2.2.15"
   }
 }
