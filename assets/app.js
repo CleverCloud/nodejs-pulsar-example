@@ -22,6 +22,13 @@ const socket = io({
     },
 });
 
+const emojis = {
+    'POSITIVE': 0x1F642,
+    'NEGATIVE': 0x1F641,
+};
+
+const shrugEmoji = 0x1F937;
+
 const form = document.getElementById('form');
 const message = document.getElementById('message');
 const messageConfirmation = document.getElementById('message-confirmation');
@@ -52,13 +59,15 @@ form.addEventListener('submit', (e) => {
     }
 });
 
-function newResultItem(msg) {
+function newResultItem(message, { label, score }) {
     const item = document.createElement('li');
     item.classList.value = 'py-4';
 
     const text = document.createElement('p');
     text.classList.value = 'text-sm text-gray-500';
-    text.textContent = msg;
+
+    const emoji = String.fromCodePoint(emojis[label] || shrugEmoji);
+    text.textContent = `${message} - ${emoji} (${label})`;
 
     item.appendChild(text);
 
@@ -66,7 +75,8 @@ function newResultItem(msg) {
 }
 
 socket.on('message', (payload) => {
-    const item = newResultItem(payload.message + payload.data);
+    const { message, sentiment } = JSON.parse(payload);
+    const item = newResultItem(message, JSON.parse(sentiment));
     result.appendChild(item);
 });
 

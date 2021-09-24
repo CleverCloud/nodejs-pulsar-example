@@ -34,7 +34,7 @@ await createConsumer(pulsarClient, config.pulsar, config.pulsar.topics.raw, asyn
     console.log('Analyzed raw message:', { data });
 
     await analyzedProducer.send({
-        data: Buffer.from(JSON.stringify({ message, user, data })),
+        data: Buffer.from(JSON.stringify({ message, user, sentiment: data })),
     }).catch((err) => {
         console.error({ err });
         return ;
