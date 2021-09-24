@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 
 const pulsarClient = new Pulsar.Client({
     serviceUrl: process.env.ADDON_PULSAR_BINARY_URL,
-    authentication: new Pulsar.AuthenticationToken({ token: process.env.ADDON_PULSAR_TOKEN })
+    authentication: new Pulsar.AuthenticationToken({ token: process.env.ADDON_PULSAR_TOKEN }),
 });
 
 const pulsar = {
@@ -23,8 +23,8 @@ const pulsar = {
     topics: {
         raw: process.env.PULSAR_TOPIC_RAW,
         analyzed: process.env.PULSAR_TOPIC_ANALYZED,
-    }
-}
+    },
+};
 
 /**
  * @returns {Promise<Pulsar.Producer>}
