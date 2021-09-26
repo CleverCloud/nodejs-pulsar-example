@@ -80,9 +80,8 @@ function newResultItem(message, { label, score }) {
     return item;
 }
 
-socket.on('message', (payload) => {
+socket.on('message', ({ message, sentiment }) => {
     loading.classList.add('hidden');
-    const { message, sentiment } = JSON.parse(payload);
     const item = newResultItem(message, JSON.parse(sentiment));
     result.appendChild(item);
 });
