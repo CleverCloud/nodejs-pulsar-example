@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devoxx Paris 2021</title>
+</head>
+<body>
+    <h1>Hey buddy!</h1>
+    <section>
+        <h2>Message</h2>
+        <form id="form" action="/messages" method="post">
+            <label for="message">Message</label>
+            <input type="text" name="message" id="message">
+            <button type="submit">Send</button>
+        </form>
+        <br>
+        <h2>Result</h2>
+        <ul id="result"></ul>
+    </section>
+    <script src="./app.js"></script>
+</body>
+</html>

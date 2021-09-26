@@ -1,18 +1,18 @@
 require('dotenv').config();
 
-function getWebsocketPulsarUrl(role = 'consumer') {
-    const hostname = process.env.ADDON_PULSAR_HOSTNAME;
-    const port = process.env.ADDON_PULSAR_HTTP_PORT;
-    const tenant = process.env.ADDON_PULSAR_TENANT;
-    const namespace = process.env.ADDON_PULSAR_NAMESPACE;
-
-    return `wss://${hostname}:${port}/ws/v2/${role}/persistent/${tenant}/${namespace}`;
-}
-
-module.exports.getProducerWebsocketPulsarUrlWithTopic = function (topic) {
-    return getWebsocketPulsarUrl('producer') + `/${topic}`;
-}
-
-module.exports.getConsumerWebsocketPulsarUrlWithTopic = function (topic, subscription) {
-    return getWebsocketPulsarUrl() + `/${topic}/${subscription}`;
-}
+module.exports = {
+    pulsar: {
+        url: process.env.ADDON_PULSAR_BINARY_URL,
+        token: process.env.ADDON_PULSAR_TOKEN,
+        namespace: process.env.ADDON_PULSAR_NAMESPACE,
+        tenant: process.env.ADDON_PULSAR_TENANT,
+        topics: {
+            raw: process.env.PULSAR_TOPIC_RAW,
+            analyzed: process.env.PULSAR_TOPIC_ANALYZED,
+        },
+    },
+    analysis: {
+        api: process.env.ANALYSIS_API,
+        model: 'distilbert-base-uncased-finetuned-sst-2-english',
+    },
+};

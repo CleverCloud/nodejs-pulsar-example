@@ -8,8 +8,24 @@
     }
   ],
   "license": "MIT",
+  "scripts": {
+    "start": "node src/index.mjs",
+    "build": "esbuild app.js --bundle --outfile=dist/app.js",
+    "dev": "esbuild app.js --bundle --watch --outfile=dist/app.js"
+  },
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.5",
+    "pulsar-client": "^1.4.0",
+    "socket.io": "^4.2.0",
+    "socket.io-client": "^4.2.0",
+    "uuid": "^8.3.2",
     "ws": "^8.2.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.13.1"
   }
 }
