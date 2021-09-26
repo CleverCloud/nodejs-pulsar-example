@@ -5,20 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devoxx Paris 2021</title>
+    <link href="/app.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Hey buddy!</h1>
-    <section>
-        <h2>Message</h2>
-        <form id="form" action="/messages" method="post">
-            <label for="message">Message</label>
-            <input type="text" name="message" id="message">
-            <button type="submit">Send</button>
-        </form>
-        <br>
-        <h2>Result</h2>
-        <ul id="result"></ul>
-    </section>
-    <script src="./app.js"></script>
+    <div class="min-h-screen bg-white">
+        <nav class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex">
+                        <div class="flex-shrink-0 flex items-center">
+                            <img class="block h-8 w-auto" src="/clever.svg" alt="Devoxx Paris 2021">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    
+        <div class="py-10">
+            <header>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h1 class="text-3xl font-bold leading-tight text-gray-900">
+                        Hey Devoxx Paris 2021!
+                    </h1>
+                </div>
+            </header>
+            <main>
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="px-4 py-8 sm:px-0">
+                        <section class="">
+                            <form id="form">
+                                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                <div class="flex mt-1">
+                                    <input type="text" name="message" id="message" class="shadow-sm focus:ring-clever-500 focus:border-clever-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="How do you feel?">
+                                    <button type="submit" class="ml-2 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-clever-600 hover:bg-clever-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-clever-500">
+                                        Send
+                                    </button>
+                                </div>
+                                <p class="hidden mt-2 text-sm text-green-500" id="message-confirmation">Message successfully sent!</p>
+                            </form>
+                        </section>
+                        <hr class="w-full border-t border-gray-300 my-8">
+                        <section class="">
+                            <h2>Results</h2>
+                            <h4 id="loading" class="hidden">Waiting for analysis...</h4>
+                            <ul id="result" role="list" class="divide-y divide-gray-200"></ul>
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
 </body>
 </html>
