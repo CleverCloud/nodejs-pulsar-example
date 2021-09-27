@@ -7,7 +7,7 @@ This demo displays a form where you can send a message, it will assess the mood 
 How it works:
 
 - The client sends a request to the server with a message.
-- The server pushes the message into a Apache Pulsar topic.
+- The server pushes the message onto an Apache Pulsar topic.
 - The worker analyzes the message and sends the result into another Apache Pulsar topic.
 - The server reads the result from the analyzed topic and sends them to the client via WebSocket.
 
