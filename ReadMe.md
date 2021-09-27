@@ -13,8 +13,9 @@ How it works:
 
 ## Documentation
 
-- [How to deploy a standalone Pulsar locally](https://pulsar.apache.org/docs/en/standalone-docker/)
-- [Apache Pulsar Add-on documentation](https://www.clever-cloud.com/doc/deploy/addon/pulsar/)
+- [How to deploy a standalone Pulsar with Docker](https://pulsar.apache.org/docs/en/standalone-docker/)
+- [Getting started with Clever Cloud CLI](https://www.clever-cloud.com/doc/getting-started/cli/)
+- [Clever Cloud Pulsar Add-on documentation](https://www.clever-cloud.com/doc/deploy/addon/pulsar/)
 - [How to deploy a Node.js application on Clever Cloud](https://www.clever-cloud.com/doc/deploy/application/javascript/by-framework/nodejs/)
 
 
@@ -24,6 +25,7 @@ You will need those dependencies to run it locally.
 
 - Node.js 14.17
 - Apache Pulsar C++ client 2.8.1
+- clever-tools (Clever Cloud CLI)
 
 Note: Apache Pulsar C++ client is already available on Clever Cloud Node.js applications.
 
