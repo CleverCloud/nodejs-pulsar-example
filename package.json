@@ -10,6 +10,7 @@
     "license": "MIT",
     "scripts": {
         "start": "node src/index.mjs",
+        "worker": "node src/worker.mjs",
         "build": "esbuild assets/app.js --bundle --outfile=dist/app.js && tailwindcss -i assets/app.css -o dist/app.css",
         "dev:js": "esbuild assets/app.js --bundle --watch --outfile=dist/app.js",
         "dev:css": "tailwindcss -i assets/app.css -o dist/app.css --watch"
