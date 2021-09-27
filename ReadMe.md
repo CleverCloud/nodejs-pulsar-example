@@ -1,20 +1,20 @@
 # Devoxx Paris 2021 Demo
 
-> This repository demonstrate the usage of Apache Pulsar with a dead simple Node.js application
+> This repository demonstrates the usage of Apache Pulsar with a dead simple Node.js application.
 
-This demo allows you to a message and analyse the sentiment of the message.
+This demo displays a form where you can send a message, it will assess the mood of your message and tell if it's a negative or positive message.
 
 How it works:
 
-- Client sends a request to the server with a message.
-- Server push the message into a Apache Pulsar topic.
-- Worker analyze the message and sends the result into another Apache Pulsar topic.
-- Server reads the result from the analyzed topic and sends them to the client via WebSocket.
+- The client sends a request to the server with a message.
+- The server pushes the message into a Apache Pulsar topic.
+- The worker analyzes the message and sends the result into another Apache Pulsar topic.
+- The server reads the result from the analyzed topic and sends them to the client via WebSocket.
 
 ## Documentation
 
 - [How to deploy a standalone Pulsar with Docker](https://pulsar.apache.org/docs/en/standalone-docker/)
-- [Getting started with Clever Cloud CLI](https://www.clever-cloud.com/doc/getting-started/cli/)
+- [Getting started with the Clever Cloud CLI](https://www.clever-cloud.com/doc/getting-started/cli/)
 - [Clever Cloud Pulsar Add-on documentation](https://www.clever-cloud.com/doc/deploy/addon/pulsar/)
 - [How to deploy a Node.js application on Clever Cloud](https://www.clever-cloud.com/doc/deploy/application/javascript/by-framework/nodejs/)
 
@@ -27,7 +27,7 @@ You will need those dependencies to run it locally.
 - Apache Pulsar C++ client 2.8.1
 - clever-tools (Clever Cloud CLI)
 
-Note: Apache Pulsar C++ client is already available on Clever Cloud Node.js applications.
+Note: The Apache Pulsar C++ client is already available on Clever Cloud Node.js applications.
 
 ## Usage
 
@@ -45,9 +45,13 @@ Build the frontend assets:
 npm run build
 ```
 
-Duplicate the `.env.example` file, rename it to `.env` and fill the empty `ADDON_PULSAR_` variables.
+Duplicate the `.env.example` file and fill the empty `ADDON_PULSAR_` variables:
 
-You can either deploy a standalone Pulsar locally with Docker or use an add-on Pulsar.
+```bash
+cp .env.example .env
+```
+
+You can either deploy a standalone Pulsar locally with Docker or use Pulsar add-on.
 
 Start the server & worker:
 
@@ -60,7 +64,7 @@ npm run worker
 
 ## Deployment
 
-To deploy the demo we need to create a Pulsar add-on and a Node.js application.
+To deploy the demo, we need to create a Pulsar add-on and a Node.js application.
 
 Create the Node.js application:
 
@@ -68,7 +72,7 @@ Create the Node.js application:
 clever create --type node demo-devoxx
 ```
 
-Create Pulsar add-on and link Node.js application:
+Create the Pulsar add-on and link it to the Node.js application:
 
 ```bash
 clever addon create addon-pulsar demo-devoxx --link demo-devoxx
