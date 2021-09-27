@@ -86,3 +86,7 @@ You can now link the application and deploy the repository:
 clever link demo-devoxx
 clever deploy
 ```
+
+To open your application in a browser, simply run `clever open`.
+
+Et voilà!
