@@ -13,6 +13,6 @@ module.exports = {
     },
     analysis: {
         api: process.env.ANALYSIS_API,
-        model: 'distilbert-base-uncased-finetuned-sst-2-english',
+        model: process.env.ANALYSIS_MODEL,
     },
 };
