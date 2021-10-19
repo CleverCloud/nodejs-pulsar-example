@@ -1,4 +1,4 @@
-# Devoxx Paris 2021 Demo
+# Node.js & Apache Pulsar Example
 
 > This repository demonstrates the usage of Apache Pulsar with a dead simple Node.js application.
 
@@ -34,7 +34,7 @@ Note: The Apache Pulsar C++ client is already available on Clever Cloud Node.js 
 Clone the repository and install its dependencies:
 
 ```bash
-git clone https://github.com/CleverCloud/devoxx-paris-2021-demo.git && cd devoxx-paris-2021-demo
+git clone https://github.com/CleverCloud/nodejs-pulsar-example.git && cd nodejs-pulsar-example
 
 npm install
 ```
@@ -69,13 +69,13 @@ To deploy the demo, we need to create a Pulsar add-on and a Node.js application.
 Create the Node.js application:
 
 ```bash
-clever create --type node demo-devoxx
+clever create --type node nodejs-pulsar
 ```
 
 Create the Pulsar add-on and link it to the Node.js application:
 
 ```bash
-clever addon create addon-pulsar demo-devoxx --link demo-devoxx
+clever addon create addon-pulsar nodejs-pulsar --link nodejs-pulsar
 ```
 
 Import the production environnment example:
@@ -87,7 +87,7 @@ cat .env.prod.example | clever env import
 You can now link the application and deploy the repository:
 
 ```bash
-clever link demo-devoxx
+clever link node-pulsar
 clever deploy
 ```
 
