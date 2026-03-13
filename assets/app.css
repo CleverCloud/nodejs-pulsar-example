@@ -1,3 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+
+@theme {
+    --color-clever-500: #DE233C;
+    --color-clever-600: #CB1C42;
+    --color-clever-700: #A51050;
+}

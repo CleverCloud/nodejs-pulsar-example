@@ -36,7 +36,7 @@ app.post('/messages', async (req, res) => {
         })),
     }).catch((err) => {
         console.error(err);
-        res.json({ message: err }).status(500);
+        res.status(500).json({ message: err });
     });
 
     console.log('Produced raw message:', { message: req.body.message, user: req.cookies.user });
@@ -48,7 +48,7 @@ io.on('connection', async (socket) => {
     const cookies = cookie.parse(socket.handshake.headers.cookie);
 
     socket.join(cookies.user);
-    
+
     console.log('User connected:', { user: cookies.user });
 
     const consumer = await createConsumer(pulsarClient, config.pulsar, config.pulsar.topics.analyzed, (msg, msgConsumer) => {

@@ -1,9 +1,11 @@
-const { Client, AuthenticationToken } = require('pulsar-client');
+import Pulsar from 'pulsar-client';
+
+const { Client, AuthenticationToken } = Pulsar;
 
 /**
  * @returns {Pulsar.Client}
  */
-module.exports.createClient = function (config) {
+export function createClient(config) {
     return new Client({
         serviceUrl: config.url,
         authentication: new AuthenticationToken({ token: config.token }),
@@ -13,7 +15,7 @@ module.exports.createClient = function (config) {
 /**
  * @returns {Promise<Pulsar.Producer>}
  */
-module.exports.createProducer = function (client, config, topic) {
+export function createProducer(client, config, topic) {
     return client.createProducer({
         topic: `persistent://${config.tenant}/${config.namespace}/${topic}`,
     });
@@ -22,7 +24,7 @@ module.exports.createProducer = function (client, config, topic) {
 /**
  * @returns {Promise<Pulsar.Consumer>}
  */
-module.exports.createConsumer = function (client, config, topic, listener) {
+export function createConsumer(client, config, topic, listener) {
     return client.subscribe({
         topic: `persistent://${config.tenant}/${config.namespace}/${topic}`,
         subscription: 'socket-io',
